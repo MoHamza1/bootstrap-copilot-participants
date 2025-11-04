@@ -1,0 +1,108 @@
+{
+  "name": "copilot-gmqe",
+  "displayName": "Copilot GMQE",
+  "description": "VS Code extension scaffolding for coordinating multiple specialized chat participants.",
+  "version": "0.0.1",
+  "publisher": "codex-lab",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:copilot-gmqe.sendMessage",
+    "onCommand:copilot-gmqe.refreshParticipants",
+    "onCommand:copilot-gmqe.forwardChat",
+    "onCommand:copilot-gmqe.petHelper.confirmUpdate",
+    "onView:copilot-gmqe-participants",
+    "onChatParticipant:copilot-gmqe.codegen",
+    "onChatParticipant:copilot-gmqe.example",
+    "onChatParticipant:copilot-gmqe.pet-helper"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -p . -w",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "package": "vsce package"
+  },
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "copilot-gmqe.codegen",
+        "name": "CodeGenerator",
+        "description": "Produces scaffolding and boilerplate for new features."
+      },
+      {
+        "id": "copilot-gmqe.example",
+        "name": "ExampleParticipant",
+        "description": "Demonstrates baseline participant chat wiring."
+      },
+      {
+        "id": "copilot-gmqe.pet-helper",
+        "name": "PETHelper",
+        "description": "Guides navigation and workspace diagnostics.",
+        "commands": [
+          {
+            "name": "update_instance",
+            "description": "Update the execution owner for an PET instance.",
+            "parameters": [
+              {
+                "name": "cycle_slug",
+                "description": "Cycle identifier",
+                "required": true
+              },
+              {
+                "name": "instance_slug",
+                "description": "Instance identifier",
+                "required": true
+              },
+              {
+                "name": "execution_owner",
+                "description": "Username to assign as execution owner",
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "copilot-gmqe.sendMessage",
+        "title": "Copilot GMQE: Send Message"
+      },
+      {
+        "command": "copilot-gmqe.refreshParticipants",
+        "title": "Copilot GMQE: Refresh Participants"
+      },
+      {
+        "command": "copilot-gmqe.forwardChat",
+        "title": "Copilot GMQE: Forward Chat (Manual)"
+      },
+      {
+        "command": "copilot-gmqe.petHelper.confirmUpdate",
+        "title": "Copilot GMQE: Confirm PET Helper Update"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "copilot-gmqe-participants",
+          "name": "Copilot Participants"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "vsce": "^2.15.0"
+  }
+}

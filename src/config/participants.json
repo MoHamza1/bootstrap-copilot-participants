@@ -1,0 +1,23 @@
+{
+  "$schema": "./participants.schema.json",
+  "participants": [
+    {
+      "id": "codegen",
+      "entry": "participants/codegen",
+      "title": "Code Generator",
+      "description": "Creates boilerplate and scaffolding for new features."
+    },
+    {
+      "id": "example",
+      "entry": "participants/example",
+      "title": "Example Participant",
+      "description": "Demonstrates the participant lifecycle."
+    },
+    {
+      "id": "pet-helper",
+      "entry": "participants/pet-helper",
+      "title": "PET Helper",
+      "description": "Guides navigation and workspace diagnostics."
+    }
+  ]
+}
